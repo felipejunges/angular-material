@@ -1,0 +1,36 @@
+{
+  "clientes": [
+    {
+      "nome": "Philip",
+      "email": "phil@gmail.com",
+      "dataNascimento": "1985-03-08T03:00:00.000Z",
+      "graduacao": 1,
+      "genero": "M",
+      "id": "5e06"
+    },
+    {
+      "nome": "Gabi",
+      "email": "gabi@gmail.com",
+      "dataNascimento": "1977-06-17T03:00:00.000Z",
+      "graduacao": 1,
+      "genero": "F",
+      "id": "3a72"
+    },
+    {
+      "nome": "Katy Maria",
+      "email": "katy@tigre.com",
+      "dataNascimento": "2014-01-01T02:00:00.000Z",
+      "graduacao": 1,
+      "genero": "F",
+      "id": "c8ce"
+    },
+    {
+      "nome": "Max Jungues",
+      "email": "maxjungues@gmail.com",
+      "dataNascimento": "2018-01-01T02:00:00.000Z",
+      "graduacao": 1,
+      "genero": "M",
+      "id": "66ad"
+    }
+  ]
+}

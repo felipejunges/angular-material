@@ -1,0 +1,55 @@
+<div mat-dialog-title class="title">Dados do cliente</div>
+
+<form [formGroup]="formulario" (submit)="onFormSubmit()" #formDir="ngForm">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="EX: José Silva" formControlName="nome">
+                @if (campoInvalido('nome')) {
+                <mat-error>Tomá nos cu</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput placeholder="EX: josesilva@gmail.com" formControlName="email">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Data de nascimento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Graduação</mat-label>
+                <mat-select formControlName="graduacao">
+                    @for (graduacao of graduacoes; track graduacao.key) {
+                    <mat-option [value]="graduacao.key">{{graduacao.value}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-radio-group aria-label="Select an option" class="radio-group" formControlName="genero">
+                <mat-label>Gênero</mat-label>
+                <mat-radio-button class="radio-button" value="M">Masculino</mat-radio-button>
+                <mat-radio-button class="radio-button" value="F">Feminino</mat-radio-button>
+                <mat-radio-button class="radio-button" value="N">Não informar</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button class="salvar" color="primary" type="submit" [disabled]="isSubmiting || formDir.pristine || formDir.invalid">Salvar</button>
+        <button mat-raised-button class="cancelar" type="button" [mat-dialog-close]="false">Cancelar</button>
+    </div>
+</form>

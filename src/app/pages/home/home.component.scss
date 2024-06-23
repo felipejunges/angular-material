@@ -1,0 +1,16 @@
+.content {
+    padding: 8px;
+    max-width: 1600px !important;
+    margin: 0 auto;
+
+    .botao-incluir {
+        display: flex;
+        flex-direction: row-reverse;
+        padding-bottom: 16px;
+    }
+}
+
+.align-right {
+    text-align: right;
+    justify-content: flex-end;
+  }
