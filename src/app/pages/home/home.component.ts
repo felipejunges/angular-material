@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { ClienteComponent } from '../cliente/cliente.component';
+import { ClientesService } from '../../services/clientes.service';
+import { Cliente } from '../../interfaces/cliente';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { ClientesService } from '../../services/clientes.service';
-import { Cliente } from '../../interfaces/cliente';
-import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, MatButtonModule, MatTableModule, MatProgressBarModule, MatDialogModule, MatIconModule, CommonModule],
+  imports: [RouterModule, CommonModule, MatButtonModule, MatTableModule, MatProgressBarModule, MatDialogModule, MatIconModule, MatFormFieldModule, MatInputModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -27,6 +29,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarClientes();
+  }
+
+  applyFilter(event: Event) {
   }
 
   listarClientes() {

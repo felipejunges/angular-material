@@ -10,6 +10,9 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientesService } from '../../services/clientes.service';
 import { Cliente } from '../../interfaces/cliente';
+import { CommonModule } from '@angular/common';
+import { provideNgxMask, NgxMaskDirective } from 'ngx-mask';
+import { GenericValidators } from '../../validators/generic.validators';
 
 @Component({
   selector: 'app-cliente',
@@ -22,10 +25,13 @@ import { Cliente } from '../../interfaces/cliente';
     MatRadioModule,
     MatSelectModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
+    NgxMaskDirective
   ],
   providers: [
-    provideNativeDateAdapter()
+    provideNativeDateAdapter(),
+    provideNgxMask(),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './cliente.component.html',
@@ -53,6 +59,7 @@ export class ClienteComponent implements OnInit {
     this.formulario = formBuilder.group({
       nome: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       email: new FormControl('', [Validators.required, Validators.email]),
+      cpf: new FormControl('', [Validators.required, GenericValidators.isValidCpf()]),
       dataNascimento: '',
       graduacao: 1,
       genero: ''
@@ -65,8 +72,10 @@ export class ClienteComponent implements OnInit {
   }
 
   onFormSubmit() {
-    if (this.formulario.invalid)
+    if (this.formulario.invalid){
+      this.formulario.markAsTouched();
       return;
+    }
 
     this.isSubmiting = true;
 

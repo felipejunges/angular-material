@@ -6,9 +6,10 @@
             <mat-form-field appearance="outline">
                 <mat-label>Nome</mat-label>
                 <input matInput placeholder="EX: José Silva" formControlName="nome">
-                @if (campoInvalido('nome')) {
-                <mat-error>Tomá nos cu</mat-error>
-                }
+                <mat-error *ngIf="campoInvalido('nome')">
+                    <ng-container *ngIf="formulario.get('nome')!.errors?.['required']">O nome é obrigatório</ng-container>
+                    <ng-container *ngIf="formulario.get('nome')!.errors?.['maxlength']">O tamanho maximo do nome é de 100 caracteres</ng-container>
+                </mat-error>
             </mat-form-field>
         </div>
 
@@ -16,6 +17,21 @@
             <mat-form-field appearance="outline">
                 <mat-label>E-mail</mat-label>
                 <input matInput placeholder="EX: josesilva@gmail.com" formControlName="email">
+                <mat-error *ngIf="campoInvalido('email')">
+                    <ng-container *ngIf="formulario.get('email')!.errors?.['required']">O nome é obrigatório</ng-container>
+                    <ng-container *ngIf="formulario.get('email')!.errors?.['email']">O e-mail deve ser informado corretamente</ng-container>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>CPF</mat-label>
+                <input matInput placeholder="000.000.000-00" mask="000.000.000-00" formControlName="cpf">
+                <mat-error *ngIf="campoInvalido('cpf')">
+                    <ng-container *ngIf="formulario.get('cpf')!.errors?.['required']">O CPF é obrigatório</ng-container>
+                    <ng-container *ngIf="formulario.get('cpf')!.errors?.['cpfNotValid']">O CPF deve ser informado corretamente</ng-container>
+                </mat-error>
             </mat-form-field>
         </div>
 
@@ -49,7 +65,8 @@
     </div>
 
     <div mat-dialog-actions class="action">
-        <button mat-raised-button class="salvar" color="primary" type="submit" [disabled]="isSubmiting || formDir.pristine || formDir.invalid">Salvar</button>
+        <button mat-raised-button class="salvar" color="primary" type="submit"
+            [disabled]="isSubmiting || formDir.pristine || formDir.invalid">Salvar</button>
         <button mat-raised-button class="cancelar" type="button" [mat-dialog-close]="false">Cancelar</button>
     </div>
 </form>
