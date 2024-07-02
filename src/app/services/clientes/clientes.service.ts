@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cliente } from '../interfaces/cliente';
+import { Cliente } from '../../interfaces/cliente';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
-
-  private API_URL = 'http://localhost:3000';
+  private API_URL = environment.apiBaseUrl;
 
   constructor(private httpClient: HttpClient) { }
 

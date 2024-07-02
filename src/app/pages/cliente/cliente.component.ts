@@ -8,11 +8,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ClientesService } from '../../services/clientes.service';
 import { Cliente } from '../../interfaces/cliente';
 import { CommonModule } from '@angular/common';
 import { provideNgxMask, NgxMaskDirective } from 'ngx-mask';
 import { GenericValidators } from '../../validators/generic.validators';
+import { ClientesService } from '../../services/clientes/clientes.service';
 
 @Component({
   selector: 'app-cliente',

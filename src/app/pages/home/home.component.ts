@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ClienteComponent } from '../cliente/cliente.component';
-import { ClientesService } from '../../services/clientes.service';
 import { Cliente } from '../../interfaces/cliente';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -11,6 +10,7 @@ import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dial
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ClientesService } from '../../services/clientes/clientes.service';
 
 @Component({
   selector: 'app-home',
