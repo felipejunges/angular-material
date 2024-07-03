@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,6 +17,12 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   private service = inject(UserService);
+  private router = inject(Router);
 
   user$ = this.service.retornarUser();
+
+  logout() {
+    this.service.logout();
+    this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.routerState.snapshot.url } });
+  }
 }
